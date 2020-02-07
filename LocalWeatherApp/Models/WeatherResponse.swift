@@ -22,10 +22,10 @@ struct WeatherResponse: Codable {
 // MARK: - Currently
 struct Currently: Codable {
     let time: Int?
-    let summary: Summary?
-    let icon: Icon?
+    let summary: String?
+    let icon: String?
     let precipIntensity, precipProbability: Double?
-    let precipType: PrecipType?
+    let precipType: String?
     let temperature, apparentTemperature, dewPoint, humidity: Double?
     let pressure, windSpeed, windGust: Double?
     let windBearing: Int?
@@ -34,29 +34,10 @@ struct Currently: Codable {
     let ozone: Double?
 }
 
-enum Icon: String, Codable {
-    case clearDay = "clear-day"
-    case clearNight = "clear-night"
-    case cloudy = "cloudy"
-    case partlyCloudyDay = "partly-cloudy-day"
-    case partlyCloudyNight = "partly-cloudy-night"
-}
-
-enum PrecipType: String, Codable {
-    case rain = "rain"
-}
-
-enum Summary: String, Codable {
-    case clear = "Clear"
-    case mostlyCloudy = "Mostly Cloudy"
-    case overcast = "Overcast"
-    case partlyCloudy = "Partly Cloudy"
-}
-
 // MARK: - Daily
 struct Daily: Codable {
     let summary: String?
-    let icon: PrecipType?
+    let icon: String?
     let data: [Datum]
 }
 
@@ -68,7 +49,7 @@ struct Datum: Codable {
     let moonPhase, precipIntensity, precipIntensityMax: Double?
     let precipIntensityMaxTime: Int?
     let precipProbability: Double?
-    let precipType: PrecipType?
+    let precipType: String?
     let temperatureHigh: Double?
     let temperatureHighTime: Int?
     let temperatureLow: Double?
@@ -110,6 +91,6 @@ struct Flags: Codable {
 // MARK: - Hourly
 struct Hourly: Codable {
     let summary: String?
-    let icon: Icon?
+    let icon: String?
     let data: [Currently]
 }

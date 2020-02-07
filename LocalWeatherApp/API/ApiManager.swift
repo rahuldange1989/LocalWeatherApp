@@ -75,7 +75,7 @@ extension APIManager {
             let searchArticlesModel = try decoder.decode(WeatherResponse.self, from: json)
             return completion(searchArticlesModel, .Success)
         } catch let error {
-            print(">>> Error creating current search articles from JSON because: \(error.localizedDescription)")
+            print(">>> Error creating weather response from JSON because: \(error.localizedDescription)")
             return completion(nil, .DataError)
         }
     }

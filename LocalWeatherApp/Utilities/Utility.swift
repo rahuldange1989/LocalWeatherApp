@@ -16,7 +16,7 @@ class Utility {
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
             // Add the actions.
             alertView.addAction(okAction)
-            p.present(alertView, animated: true, completion: nil)
+            p.present(alertView, animated: false, completion: nil)
         }
     }
     
