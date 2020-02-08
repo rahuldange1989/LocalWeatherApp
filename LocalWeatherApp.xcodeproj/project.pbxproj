@@ -18,6 +18,7 @@
 		5F81C5BF23EDB8F800427977 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81C5BD23EDB8F800427977 /* Utility.swift */; };
 		5F81C5C023EDB8F800427977 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81C5BE23EDB8F800427977 /* NetworkReachability.swift */; };
 		5F81C5C323EDBB0200427977 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F81C5C223EDBB0200427977 /* WeatherResponse.swift */; };
+		5FDA330C23EF2FA40037C242 /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FDA330B23EF2FA40037C242 /* HourlyTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		5F81C5BD23EDB8F800427977 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		5F81C5BE23EDB8F800427977 /* NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
 		5F81C5C223EDBB0200427977 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
+		5FDA330B23EF2FA40037C242 /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				5F4B365F23ECABFC00A79E5F /* AppDelegate.swift */,
 				5F4B366123ECABFC00A79E5F /* SceneDelegate.swift */,
 				5F4B366323ECABFC00A79E5F /* WeatherViewController.swift */,
+				5FDA330B23EF2FA40037C242 /* HourlyTableViewCell.swift */,
 				5F4B366523ECABFC00A79E5F /* Main.storyboard */,
 				5F4B366823ECABFE00A79E5F /* Assets.xcassets */,
 				5F4B366A23ECABFE00A79E5F /* LaunchScreen.storyboard */,
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F81C5BA23EDB7E100427977 /* ApiManager.swift in Sources */,
+				5FDA330C23EF2FA40037C242 /* HourlyTableViewCell.swift in Sources */,
 				5F4B366423ECABFC00A79E5F /* WeatherViewController.swift in Sources */,
 				5F81C5C023EDB8F800427977 /* NetworkReachability.swift in Sources */,
 				5F81C5BF23EDB8F800427977 /* Utility.swift in Sources */,

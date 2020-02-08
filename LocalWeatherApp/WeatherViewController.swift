@@ -23,10 +23,13 @@ class WeatherViewController: UIViewController {
 	@IBOutlet weak var weatherImageView: UIImageView!
 	
 	var locationManager = CLLocationManager()
+	var hourlyTableData: [Currently]  = []
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+		// -- hide extra tableview lines
+		self.hourlyTableView.tableFooterView = UIView()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +55,10 @@ class WeatherViewController: UIViewController {
 		self.uvIndexLabel.text = "\(Int(weatherRespObj.currently?.uvIndex?.rounded() ?? 0))"
 		self.visibilityLabel.text = "\(Int(weatherRespObj.currently?.visibility?.rounded() ?? 0))" + "+ mi"
 		self.pressureLabel.text = "\(Int(weatherRespObj.currently?.pressure?.rounded() ?? 0))" + " mb"
+		
+		// -- reload table view
+		self.hourlyTableData = Array(weatherRespObj.hourly?.data.prefix(upTo: 24) ?? [])
+		self.hourlyTableView.reloadData()
 	}
 	
 	func getCurrentLocationInfo() {
@@ -130,5 +137,22 @@ extension WeatherViewController: CLLocationManagerDelegate {
 		if status == .authorizedWhenInUse || status == .authorizedAlways {
 			manager.requestLocation()
 		}
+	}
+}
+
+// MARK: - UITableView Delegate and data source methods-
+extension WeatherViewController: UITableViewDelegate, UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return hourlyTableData.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "HourlyTableViewCell", for: indexPath) as! HourlyTableViewCell
+		cell.configureCell(currentHourData: hourlyTableData[indexPath.row])
+        return cell
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 55.0
 	}
 }

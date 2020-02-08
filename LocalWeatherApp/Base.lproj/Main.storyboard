@@ -29,13 +29,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zT-5b-wwZ">
-                                                <rect key="frame" x="120" y="16" width="284" height="0.0"/>
+                                                <rect key="frame" x="140" y="16" width="264" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN7-Yo-4lP">
-                                                <rect key="frame" x="120" y="26" width="284" height="84"/>
+                                                <rect key="frame" x="140" y="26" width="264" height="84"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -170,17 +170,74 @@
                                             <constraint firstItem="6Z3-cG-YRz" firstAttribute="top" secondItem="iN7-Yo-4lP" secondAttribute="bottom" constant="15" id="Dsk-P5-cTP"/>
                                             <constraint firstItem="uYs-LB-jWt" firstAttribute="leading" secondItem="ZpT-Jz-67H" secondAttribute="leading" constant="10" id="H19-U4-jp7"/>
                                             <constraint firstAttribute="trailing" secondItem="iN7-Yo-4lP" secondAttribute="trailing" constant="10" id="H3J-0w-AVN"/>
-                                            <constraint firstItem="iN7-Yo-4lP" firstAttribute="leading" secondItem="uYs-LB-jWt" secondAttribute="trailing" constant="10" id="MER-d3-ock"/>
+                                            <constraint firstItem="iN7-Yo-4lP" firstAttribute="leading" secondItem="uYs-LB-jWt" secondAttribute="trailing" constant="30" id="MER-d3-ock"/>
                                             <constraint firstItem="uYs-LB-jWt" firstAttribute="top" secondItem="ZpT-Jz-67H" secondAttribute="top" constant="10" id="UvF-S3-4ME"/>
                                             <constraint firstItem="6Z3-cG-YRz" firstAttribute="leading" secondItem="ZpT-Jz-67H" secondAttribute="leading" constant="10" id="bZH-km-6m5"/>
                                             <constraint firstItem="3zT-5b-wwZ" firstAttribute="top" secondItem="ZpT-Jz-67H" secondAttribute="top" constant="16" id="mxp-xO-Zck"/>
-                                            <constraint firstItem="3zT-5b-wwZ" firstAttribute="leading" secondItem="uYs-LB-jWt" secondAttribute="trailing" constant="10" id="sOj-Ea-NeP"/>
+                                            <constraint firstItem="3zT-5b-wwZ" firstAttribute="leading" secondItem="uYs-LB-jWt" secondAttribute="trailing" constant="30" id="sOj-Ea-NeP"/>
                                             <constraint firstAttribute="trailing" secondItem="6Z3-cG-YRz" secondAttribute="trailing" constant="10" id="x1D-Sz-Ofh"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gNF-vi-iH4" userLabel="HourlyView">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gNF-vi-iH4" userLabel="HourlyView">
                                         <rect key="frame" x="0.0" y="387" width="414" height="387"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Hourly weather info:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HCP-NK-FvN">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HourlyTableViewCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HourlyTableViewCell" id="9eG-hD-Xub" customClass="HourlyTableViewCell" customModule="LocalWeatherApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="72" width="414" height="55"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9eG-hD-Xub" id="ohF-Ia-gA6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sxe-12-tw8">
+                                                            <rect key="frame" x="10" y="7.5" width="40" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="40" id="KRK-7O-2os"/>
+                                                                <constraint firstAttribute="height" constant="40" id="h37-d8-T5Q"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfY-To-wPg">
+                                                            <rect key="frame" x="60" y="18" width="254" height="19"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFM-Et-Le6">
+                                                            <rect key="frame" x="354.5" y="18" width="39.5" height="19"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="kfY-To-wPg" firstAttribute="leading" secondItem="Sxe-12-tw8" secondAttribute="trailing" constant="10" id="Gwa-TU-8jE"/>
+                                                        <constraint firstItem="Sxe-12-tw8" firstAttribute="centerY" secondItem="ohF-Ia-gA6" secondAttribute="centerY" id="IHK-Gu-RZ0"/>
+                                                        <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kfY-To-wPg" secondAttribute="trailing" constant="100" id="Tx7-cn-m6p"/>
+                                                        <constraint firstItem="Sxe-12-tw8" firstAttribute="leading" secondItem="ohF-Ia-gA6" secondAttribute="leading" constant="10" id="U9t-er-TKI"/>
+                                                        <constraint firstItem="wFM-Et-Le6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kfY-To-wPg" secondAttribute="trailing" constant="8" symbolic="YES" id="kvg-Dh-eoM"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wFM-Et-Le6" secondAttribute="trailing" constant="20" id="nA0-UM-qBR"/>
+                                                        <constraint firstItem="kfY-To-wPg" firstAttribute="centerY" secondItem="Sxe-12-tw8" secondAttribute="centerY" id="nw1-6u-AVl"/>
+                                                        <constraint firstItem="wFM-Et-Le6" firstAttribute="centerY" secondItem="kfY-To-wPg" secondAttribute="centerY" id="qKr-sV-wTt"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="tempLabel" destination="kfY-To-wPg" id="0Dr-1B-L9x"/>
+                                                    <outlet property="timeLabel" destination="wFM-Et-Le6" id="jSS-a4-1dG"/>
+                                                    <outlet property="weatherImageView" destination="Sxe-12-tw8" id="lC4-Fa-55u"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="MNm-5h-UW3"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="JeV-GS-zZu"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -235,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="101"/>
+            <point key="canvasLocation" x="902.89855072463774" y="100.44642857142857"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cKB-3i-ahQ">

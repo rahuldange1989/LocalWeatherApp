@@ -55,21 +55,11 @@ class Utility {
         }
     }
     
-    static func getDateStringFrom(isoDateString: String) -> String {
-        let dateFormatter = ISO8601DateFormatter()
-        let date = dateFormatter.date(from:isoDateString) ?? Date()
-        let requiredDateFormater = DateFormatter()
-        requiredDateFormater.dateFormat = "dd/MM/yyyy"
-        return requiredDateFormater.string(from: date)
-    }
-    
-    static func getBoudingRectForText(text: String, font: UIFont, boundingRect: CGSize) -> CGSize {
-        
-        let context: NSStringDrawingContext = NSStringDrawingContext()
-        
-        let size: CGSize = text.boundingRect(with: boundingRect, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): font]), context: context).size as CGSize
-        
-        return size
+    static func getHourFrom(timeStamp: Double) -> String {
+        let date = Date(timeIntervalSince1970: timeStamp)
+		let formatter = DateFormatter()
+		formatter.dateFormat = "hh a"
+		return formatter.string(from: date)
     }
 }
 
@@ -98,15 +88,4 @@ extension UIColor {
     convenience init(netHex:Int, alpha: CGFloat) {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff, alpha:alpha, dummy: 0)
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
-    guard let input = input else { return nil }
-    return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
-    return input.rawValue
 }
