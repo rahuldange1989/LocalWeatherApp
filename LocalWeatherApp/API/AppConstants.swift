@@ -9,6 +9,7 @@
 import Foundation
 
 let SERVER_URL = "https://api.darksky.net/forecast/"
+let IMAGE_URL_PATH = "https://darksky.net/images/weather-icons/"
 let API_KEY_DARK_SKY = "2bb07c3bece89caf533ac9a5d23d8417"
 
 // -- Constant String Messages

@@ -16,21 +16,21 @@ struct WeatherResponse: Codable {
     let hourly: Hourly?
     let daily: Daily?
     let flags: Flags?
-    let offset: Int?
+    let offset: Double?
 }
 
 // MARK: - Currently
 struct Currently: Codable {
-    let time: Int?
+    let time: Double?
     let summary: String?
     let icon: String?
     let precipIntensity, precipProbability: Double?
     let precipType: String?
     let temperature, apparentTemperature, dewPoint, humidity: Double?
     let pressure, windSpeed, windGust: Double?
-    let windBearing: Int?
+    let windBearing: Double?
     let cloudCover: Double?
-    let uvIndex, visibility: Int?
+    let uvIndex, visibility: Double?
     let ozone: Double?
 }
 
@@ -43,34 +43,34 @@ struct Daily: Codable {
 
 // MARK: - Datum
 struct Datum: Codable {
-    let time: Int?
+    let time: Double?
     let summary, icon: String?
-    let sunriseTime, sunsetTime: Int?
+    let sunriseTime, sunsetTime: Double?
     let moonPhase, precipIntensity, precipIntensityMax: Double?
-    let precipIntensityMaxTime: Int?
+    let precipIntensityMaxTime: Double?
     let precipProbability: Double?
     let precipType: String?
     let temperatureHigh: Double?
-    let temperatureHighTime: Int?
+    let temperatureHighTime: Double?
     let temperatureLow: Double?
-    let temperatureLowTime: Int?
+    let temperatureLowTime: Double?
     let apparentTemperatureHigh: Double?
-    let apparentTemperatureHighTime: Int?
+    let apparentTemperatureHighTime: Double?
     let apparentTemperatureLow: Double?
-    let apparentTemperatureLowTime: Int?
+    let apparentTemperatureLowTime: Double?
     let dewPoint, humidity, pressure, windSpeed: Double?
     let windGust: Double?
-    let windGustTime, windBearing: Int?
+    let windGustTime, windBearing: Double?
     let cloudCover: Double?
-    let uvIndex, uvIndexTime: Int?
+    let uvIndex, uvIndexTime: Double?
     let visibility, ozone, temperatureMin: Double?
-    let temperatureMinTime: Int?
+    let temperatureMinTime: Double?
     let temperatureMax: Double?
-    let temperatureMaxTime: Int?
+    let temperatureMaxTime: Double?
     let apparentTemperatureMin: Double?
-    let apparentTemperatureMinTime: Int?
+    let apparentTemperatureMinTime: Double?
     let apparentTemperatureMax: Double?
-    let apparentTemperatureMaxTime: Int?
+    let apparentTemperatureMaxTime: Double?
 }
 
 // MARK: - Flags

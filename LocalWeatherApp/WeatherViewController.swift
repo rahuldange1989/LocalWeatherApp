@@ -11,6 +11,17 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
 
+	@IBOutlet weak var hourlyTableView: UITableView!
+	@IBOutlet weak var pressureLabel: UILabel!
+	@IBOutlet weak var visibilityLabel: UILabel!
+	@IBOutlet weak var uvIndexLabel: UILabel!
+	@IBOutlet weak var dewPointLabel: UILabel!
+	@IBOutlet weak var humidityLabel: UILabel!
+	@IBOutlet weak var windLabel: UILabel!
+	@IBOutlet weak var summaryLabel: UILabel!
+	@IBOutlet weak var temperatureLabel: UILabel!
+	@IBOutlet weak var weatherImageView: UIImageView!
+	
 	var locationManager = CLLocationManager()
 	
 	override func viewDidLoad() {
@@ -23,6 +34,26 @@ class WeatherViewController: UIViewController {
 	}
 
 	// MARK: - Internal methods -
+	func mapDataToUI(weatherRespone: WeatherResponse?) {
+		guard let weatherRespObj = weatherRespone else { return }
+		// -- assign weather image
+		if let imageName = weatherRespObj.currently?.icon {
+			do {
+				self.weatherImageView.image = try UIImage.init(data: Data.init(contentsOf: URL.init(string: IMAGE_URL_PATH + imageName + ".png")!))
+			} catch {
+				print(error.localizedDescription)
+			}
+		}
+		self.temperatureLabel.text = "\(Int( weatherRespObj.currently?.temperature?.rounded() ?? 0))° " + (weatherRespObj.currently?.summary ?? "")
+		self.summaryLabel.text = weatherRespObj.hourly?.summary ?? ""
+		self.windLabel.text = "\(Int(weatherRespObj.currently?.windSpeed?.rounded() ?? 0))" + " mph"
+		self.humidityLabel.text = "\((weatherRespObj.currently?.humidity ?? 0) * 100)" + "%"
+		self.dewPointLabel.text = "\(Int(weatherRespObj.currently?.dewPoint?.rounded() ?? 0))" + "°"
+		self.uvIndexLabel.text = "\(Int(weatherRespObj.currently?.uvIndex?.rounded() ?? 0))"
+		self.visibilityLabel.text = "\(Int(weatherRespObj.currently?.visibility?.rounded() ?? 0))" + "+ mi"
+		self.pressureLabel.text = "\(Int(weatherRespObj.currently?.pressure?.rounded() ?? 0))" + " mb"
+	}
+	
 	func getCurrentLocationInfo() {
 		locationManager.delegate = self
 		locationManager.distanceFilter = kCLDistanceFilterNone
@@ -31,7 +62,8 @@ class WeatherViewController: UIViewController {
 		locationManager.requestLocation()
 
 		if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways {
-			locationManager.startUpdatingLocation()
+			Utility.showActivityIndicatory(self.view.superview!)
+			locationManager.requestLocation()
 		} else {
 			let alertView: UIAlertController = UIAlertController(title:"Location Permission needed", message: LOCATION_DISABLED_MESSAGE, preferredStyle: .alert)
 			let cancelAlertAction = UIAlertAction.init(title: "Cancel", style: .default, handler: nil)
@@ -52,12 +84,13 @@ class WeatherViewController: UIViewController {
 		apiManager.getWeatherInfo(latitude: latitude, longitude: longitude) { [unowned self] (weatherResponse, result) in
 			DispatchQueue.main.async {
 				if result == .Success {
-					print(weatherResponse!)
+					self.mapDataToUI(weatherRespone: weatherResponse)
 				} else if result == .NoInternet {
 					Utility.showAlert(self, title: "No Internet", message: NO_NETWORK_ERROR_MSG)
 				} else {
 					Utility.showAlert(self, title: "Error", message: SERVER_ERROR_MSG)
 				}
+				Utility.hideActivityIndicatory(self.view.superview!)
 			}
 		}
 	}
@@ -77,11 +110,25 @@ extension WeatherViewController: CLLocationManagerDelegate {
 				self.title = "Weather Info : " + (placemark.locality ?? "")
 			}
 			
-			self.callGetWeatherInfoAPI(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+			// -- Network reachability is not yet initialised then wait for a second to call weather info API
+			if NetworkReachability.sharedInstance.path == nil {
+				_ = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { (timer) in
+					self.callGetWeatherInfoAPI(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+				})
+			} else {
+				self.callGetWeatherInfoAPI(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+			}
 		}
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+		Utility.hideActivityIndicatory(self.view.superview!)
 		print(error)
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+		if status == .authorizedWhenInUse || status == .authorizedAlways {
+			manager.requestLocation()
+		}
 	}
 }
