@@ -2,5 +2,8 @@
 App to show Weather Information for current location. Given app is Universal app which will work on iOS devices in both orientations i.e. Portrait and Landscape.
 
 # Sample App Images
+*Portrait*
 ![alt text](https://github.com/rahuldange1989/LocalWeatherApp/blob/master/Sample%20Images/Portrait.png)
+
+*Landscape*
 ![alt text](https://github.com/rahuldange1989/LocalWeatherApp/blob/master/Sample%20Images/Landscape.png)
